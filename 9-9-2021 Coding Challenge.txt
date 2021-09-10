@@ -1,0 +1,49 @@
+CREATE TABLE employees (
+	Worker_ID serial PRIMARY KEY,
+  	First_Name VARCHAR(30),
+  	Last_Name VARCHAR(30),
+  	Salary DECIMAL,
+  	Joining_Date DATETIME,
+  	Department VARCHAR(20)
+);
+
+CREATE TABLE Bonus(
+	Worker_Ref_Id integer PRIMARY KEY,
+	Bonus_Date DATETIME,
+	Bonus_Amount DECIMAL
+);
+
+CREATE TABLE Title(
+Worker_Ref_Id integer PRIMARY KEY,
+Worker_Title varChar(30),
+Affected_From DATETIME
+);
+
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Rick', 'Smith', 100000.0, '2021-02-20 09:00:00', 'HR');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Sam', 'Williams', 80000.0, '2021-06-11 09:00:00', 'Admin');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('John', 'Brown', 300000.0, '2021-02-20 09:00:00', 'HR');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Amy', 'Jones', 500000.0, '2021-02-20 09:00:00', 'Admin');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Sean', 'Garcia', 500000.0, '2021-06-11 09:00:00', 'Admin');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Ryan', 'Miller', 200000.0, '2021-01-20 09:00:00', 'Account');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Patty', 'Davis', 75000.0, '2021-01-20 09:00:00', 'Account');
+INSERT INTO employees (first_name, last_name, salary, joining_date, department) VALUES ('Monica', 'Rodriguez', 90000.0, '2021-04-11 09:00:00', 'Admin');
+
+INSERT INTO bonus(Worker_Ref_Id,Bonus_Date,Bonus_Amount)
+values(1,2,3,1,2)
+(2021-02-20 00:00:00, 2021-06-11 00:00:00, 2021-02-20 00:00:00, 2021-02-20 00:00:00, 2021-06-11 00:00:00)
+(5000,3000,4000,4500,3500);
+
+INSERT INTO title(Worker_Id,Worker_Title,Affected_From)
+values(1,2,8,5,4,7,6,3),
+('Manager','Executive','Executive','Manager','Asst. Manager', 'Executive', 'Lead', 'Lead'),
+(2021-02-20 00:00:00 ,2021-06-11 00:00:00, 2021-06-11 00:00:00, 2021-06-11 00:00:00, 2021-06-11 00:00:00, 2021-06-11 00:00:00, 2021-06-11 00:00:00, 2021-06-11 00:00:00);
+
+a) SELECT first_name, last_name FROM employees WHERE salary BETWEEN 50000 and 100000;
+
+b) SELECT department, COUNT(*) FROM employees GROUP BY department ORDER BY COUNT(*) DESC;
+
+
+c) SELECT worker_id FROM employees INTERSECT SELECT worker_ref_id FROM bonus;
+
+
+d) SELECT * FROM (SELECT *, ROW_NUMBER () OVER (ORDER BY salary DESC) rowNum FROM employees) WHERE rowNum = 5;
