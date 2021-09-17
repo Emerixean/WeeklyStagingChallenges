@@ -1,0 +1,48 @@
+public class MainDriver {
+	
+	public static void main(String[] args) {
+
+		System.out.println(ROT13("hello")); //Rot
+		System.out.println(ROT13("world"));
+		System.out.println(ROT13("JavaAPI"));
+		
+		System.out.println(DecOctal(100)); //Dec 
+		System.out.println(DecOctal(200));
+		System.out.println(DecOctal(30));
+	}
+	
+	public static String ROT13(String str) {
+		str = str.toLowerCase();
+		StringBuilder rot = new StringBuilder();
+		
+		for(int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			int temp = (int)c + 13;
+			if(temp > 122) {
+				temp = temp - 26;
+			}
+			
+			rot.append((char)temp);
+		}
+		
+		return rot.toString();
+	}
+	
+	public static String DecOctal(int num) {
+		StringBuilder octal = new StringBuilder();
+		
+		while(num > 8) {
+			int remainder = num % 8;
+			num = num / 8;
+			octal.append(remainder);
+		}
+		
+		octal.append(num);
+		octal = octal.reverse();
+		
+		return octal.toString();
+	}
+	
+
+	
+}
