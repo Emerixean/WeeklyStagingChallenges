@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String initialMemory = in.nextLine();
+		actualMemory(initialMemory);
+	}
+	
+	public static String actualMemory(String initialMemory) {
+
+		String memory = "";
+		
+		String unit = initialMemory.substring(initialMemory.length()-2);
+
+		int num = Integer.parseInt(initialMemory.substring(0, initialMemory.length()-2));
+		
+		if(num == 1 && unit.toUpperCase() == "GB") {
+
+			num = 1024;
+
+			unit = "MB";
+
+		}
+		
+		unit = unit.toUpperCase();
+		
+		if(unit.equals("GB")) {
+			float n = (float)num;
+			n = n * 0.93f;
+			memory = n + "" + unit;
+		}else if(unit.equals("MB")) {
+			num = (int)(num * 0.93f);
+			memory = num + "" + unit;
+		}
+		
+		return memory;
+	}
+}
