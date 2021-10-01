@@ -1,0 +1,5 @@
+var object = {name: "Jeremy Douglas" , age: 15 , occupations: "Consultant"}
+
+var array = Object.entries(object)
+
+console.log(array)
