@@ -1,0 +1,57 @@
+
+public class AtBash {
+	
+	public static void main(String args[]) {
+
+ String message = "!Test@!";
+ System.out.println(encode(message));
+
+ 
+    }
+	public static String encode(String message) {
+		
+		StringBuilder output = new StringBuilder();
+		
+		for (char c: message.toCharArray()) {
+			
+			if(Character.isAlphabetic(c)) {
+				
+				if(Character.isUpperCase(c)) {
+					
+					output.append(Character.toChars('Z'-(c-'A')));}
+				else {
+				output.append(Character.toChars('z'-(c-'a')));}
+			}
+			else {
+				output.append(c);
+			}
+		}
+
+
+		return output.toString();
+		
+	}
+	
+	public static String decode(String message) {
+		
+		StringBuilder output = new StringBuilder();
+		
+		for (char c: message.toCharArray()) {
+			
+			if(Character.isAlphabetic(c)) {
+				
+				if(Character.isUpperCase(c)) {
+					
+					output.append(Character.toChars('A'-(c-'Z')));}
+				else {
+				output.append(Character.toChars('a'-(c-'z')));}
+			}
+			else {
+				output.append(c);
+			}
+		}
+		return output.toString();
+	}
+
+}
+
