@@ -1,0 +1,31 @@
+public class Harshad{
+
+     public static void main(String args[])
+    {
+
+        System.out.println(isHarshad(45));
+        System.out.println(isHarshad(210));
+        System.out.println(isHarshad(250));
+  
+    }
+    
+    public static boolean isHarshad(int num){
+            int sum = 0;
+            sum = sum(sum, num);
+            
+            if (num%sum == 0)
+                return true;
+            else
+                return false;
+}
+    public static int sum(int sum, int num){
+        int x;
+        if(num>0){
+            x = num%10;
+            sum = sum + x;
+            num = num/10;
+            return sum(sum, num);
+        }
+        return sum;
+    }
+}
