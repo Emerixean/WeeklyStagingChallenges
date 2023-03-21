@@ -1,0 +1,37 @@
+import java.util.*;
+import java.util.Arrays;
+public class ArrayMultiple {
+
+    public static void main(String []args) {
+        int num= 0;
+        int arrLength=0;
+
+
+        System.out.print("Enter a positive integer: ");
+        Scanner in = new Scanner(System.in);
+
+        try {
+            num = in.nextInt();
+            if(num < 0) throw new InputMismatchException();
+
+        } catch(InputMismatchException e) {
+            System.out.println("Must enter positive integer value!");
+        }
+
+        System.out.print("Enter a positive integer for array length: ");
+
+        try {
+            arrLength = in.nextInt();
+            if(arrLength < 0) throw new InputMismatchException();
+
+        } catch(InputMismatchException e) {
+            System.out.println("Must enter positive integer value!");
+        }
+
+        int intArray[] = new int[arrLength];
+        for(int i = 0; i < arrLength  ; i++) {
+            intArray[i] = num * (i + 1);
+        }
+        System.out.println("Array of multiples (" + num + "," + arrLength +") = " + Arrays.toString(intArray));
+    }
+}
